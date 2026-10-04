@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a060d">
+<meta name="description" content="Esperando la carroza. Comedia. Viernes 6 de noviembre de 2026, 12:00. Entrada gratuita.">
+<title>Esperando la carroza — Comedia en el teatro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎭%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#2a060d; --velvet:#6e1124; --velvet-2:#44091a; --gold:#d9ab55; --gold-2:#f0d18f;
+  --ivory:#f3ead9; --paper:#fbf6ea; --ink:#1a0a0d;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wine);color:var(--ivory);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.curtain{position:fixed;inset:0;z-index:60;pointer-events:none;display:flex;animation:gone 0s 3.2s forwards}
+.curtain i{flex:1;background:
+  linear-gradient(180deg,rgba(0,0,0,.45),transparent 35%,transparent 70%,rgba(0,0,0,.55)),
+  repeating-linear-gradient(90deg,var(--velvet-2) 0,var(--velvet) 34px,#8a1a31 52px,var(--velvet) 70px,var(--velvet-2) 104px);
+  box-shadow:0 0 60px rgba(0,0,0,.6);animation:open 2.2s cubic-bezier(.7,0,.2,1) .5s forwards}
+.curtain i:first-child{transform-origin:left}.curtain i:last-child{animation-name:openR}
+@keyframes open{to{transform:translateX(-102%)} }
+@keyframes openR{to{transform:translateX(102%)} }
+@keyframes gone{to{visibility:hidden}}
+@keyframes rise{from{opacity:0;transform:translateY(24px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes sweep{0%,100%{transform:translateX(-6%)}50%{transform:translateX(6%)}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:20;padding-top:env(safe-area-inset-top,0px);background:rgba(42,6,13,.72);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid rgba(217,171,85,.18)}
+.bar{max-width:1160px;margin:0 auto;height:56px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font:italic 400 20px var(--serif);letter-spacing:.01em}
+.bar ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:500}
+.bar a:hover{color:var(--gold-2)}
+
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:120px 24px 96px;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 100%,#5a0f21 0,transparent 70%),linear-gradient(180deg,#1a0409,var(--wine))}
+.hero::before{content:"";position:absolute;top:-10%;left:50%;width:140%;height:120%;margin-left:-70%;pointer-events:none;background:radial-gradient(ellipse 34% 62% at 50% 0,rgba(255,226,160,.30),rgba(255,226,160,.07) 55%,transparent 75%);animation:sweep 14s ease-in-out infinite}
+.hero>*{position:relative}
+.kicker{font-size:15px;font-weight:500;color:var(--gold);margin:0 0 20px;letter-spacing:.04em;opacity:0;animation:rise 1.4s 2.2s forwards}
+h1{margin:0 auto;font:300 clamp(54px,13.5vw,152px)/.92 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.025em;background:linear-gradient(180deg,#fff4d6 10%,var(--gold) 90%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:rise 1.8s 2.4s forwards}
+h1 span{display:block;font-style:italic;font-weight:300;padding-right:.04em}
+.sub{font:italic 300 clamp(20px,3.2vw,30px)/1.3 var(--serif);color:#e9dcc2;margin:28px auto 0;opacity:0;animation:rise 1.4s 2.8s forwards}
+.count{display:flex;justify-content:center;gap:clamp(8px,2.4vw,22px);margin:34px auto 0;opacity:0;animation:rise 1.4s 3s forwards}
+.count div{min-width:clamp(56px,16vw,96px);padding:14px 8px 12px;border:1px solid rgba(217,171,85,.28);border-radius:18px;background:rgba(243,234,217,.05);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.count b{display:block;font:300 clamp(30px,7vw,52px)/1 var(--serif);color:var(--gold-2);font-variant-numeric:tabular-nums}
+.count span{display:block;margin-top:6px;font-size:12px;font-weight:600;color:#cdbb99}
+.count.thanks{display:block;font:italic 300 clamp(30px,5vw,48px)/1.1 var(--serif);color:var(--gold-2)}
+.actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px;opacity:0;animation:rise 1.4s 3.3s forwards}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 30px;border-radius:999px;font:600 16px var(--sans);border:1px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,color .25s}
+.btn.gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:var(--ink);box-shadow:0 8px 28px rgba(217,171,85,.28)}
+.btn.gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(217,171,85,.42)}
+.btn.line{border-color:rgba(243,234,217,.45);color:var(--ivory)}
+.btn.line:hover{background:rgba(243,234,217,.1);border-color:var(--ivory)}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+
+.band{background:var(--ivory);color:var(--ink);padding:clamp(72px,11vw,128px) 24px}
+.in{max-width:1000px;margin:0 auto}
+h2{font:300 clamp(34px,6vw,64px)/1.05 var(--serif);letter-spacing:-.02em;margin:0 0 14px}
+.lead{font-size:18px;color:#5b4549;max-width:46ch;margin:0 0 48px}
+.ticket{position:relative;display:grid;grid-template-columns:1.6fr 1fr;background:var(--paper);border-radius:22px;box-shadow:0 30px 70px -30px rgba(42,6,13,.45),0 0 0 1px rgba(110,17,36,.1);overflow:hidden;max-width:1000px;margin:0 auto}
+.stub::before,.stub::after{content:"";position:absolute;left:-1px;width:30px;height:30px;border-radius:50%;background:var(--ivory);transform:translate(-50%,-50%);z-index:2}
+.stub::before{top:0}.stub::after{top:100%}
+.main{padding:clamp(28px,5vw,52px)}
+.stub{position:relative;padding:clamp(28px,5vw,52px);border-left:2px dashed rgba(110,17,36,.3);background:linear-gradient(160deg,var(--velvet),var(--velvet-2));color:var(--ivory);display:flex;flex-direction:column;justify-content:center;gap:6px}
+.t-title{font:italic 300 clamp(28px,4vw,42px)/1.1 var(--serif);margin:0 0 28px;color:var(--velvet)}
+dl{margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:24px 20px}
+dt{font-size:13px;font-weight:600;color:#7a5a5e;margin-bottom:2px}
+dd{margin:0;font:400 clamp(22px,3vw,30px)/1.15 var(--serif)}
+.stub small{font-size:13px;color:var(--gold-2);font-weight:600}
+.stub strong{font:300 clamp(48px,7vw,76px)/1 var(--serif);color:var(--gold-2)}
+.stub p{margin:6px 0 0;font-size:15px;color:#e6d6bb}
+.stub .btn{margin-top:18px;align-self:flex-start;min-height:44px;padding:0 22px;font-size:15px}
+
+.location{padding:38px 0 0}
+.location-card{display:grid;grid-template-columns:1.4fr .9fr;gap:0;max-width:1000px;margin:22px auto 0;background:var(--paper);border-radius:24px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(42,6,13,.45),0 0 0 1px rgba(110,17,36,.1)}
+.map-box{position:relative;min-height:300px;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 50%,#5a0f21 0,#2f0915 45%,#18050a 100%)}
+.map-box::before,.map-box::after{content:"";position:absolute;left:50%;top:50%;border:1px solid rgba(217,171,85,.24);border-radius:50%;transform:translate(-50%,-50%)}
+.map-box::before{width:170px;height:170px}.map-box::after{width:320px;height:320px;border-color:rgba(217,171,85,.12)}
+.map-box svg{position:relative;z-index:1;width:60px;height:auto;filter:drop-shadow(0 10px 24px rgba(217,171,85,.38))}
+.map-copy{background:var(--paper);color:var(--ink);padding:38px 26px 30px;display:flex;flex-direction:column;justify-content:center}
+.map-copy h3{font:300 clamp(30px,4vw,42px)/1.1 var(--serif);margin:0 0 18px;color:var(--velvet)}
+.map-copy p{margin:0 0 20px;color:#4f3740;font-size:16px;line-height:1.6}
+.link-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;background:linear-gradient(180deg,var(--gold-2),var(--gold));color:var(--ink);font-weight:700;box-shadow:0 8px 18px rgba(217,171,85,.18)}
+.link-btn:hover{transform:translateY(-1px)}
+
+.reserve{position:relative;padding:clamp(80px,12vw,140px) 24px;text-align:center;overflow:hidden;background:radial-gradient(ellipse 70% 50% at 50% 0,rgba(110,17,36,.75),transparent 70%),var(--wine)}
+.reserve h2{margin-bottom:16px}
+.reserve .lead{color:#dccdb2;margin:0 auto 12px;text-align:center}
+.note{font-size:15px;color:var(--gold);margin:0 0 40px}
+form{max-width:440px;margin:0 auto;display:grid;gap:18px;text-align:left}
+label{display:grid;gap:8px;font-size:14px;font-weight:600;color:#ead9b8}
+input[type=text], input[type=tel]{width:100%;font:400 17px var(--sans);color:var(--ivory);background:rgba(243,234,217,.07);border:1px solid rgba(217,171,85,.3);border-radius:14px;padding:16px 18px;transition:border-color .25s,background .25s,box-shadow .25s}
+input::placeholder{color:rgba(243,234,217,.62)}
+input:focus{outline:none;border-color:var(--gold);background:rgba(243,234,217,.12);box-shadow:0 0 0 4px rgba(217,171,85,.18)}
+form .btn{width:100%;margin-top:6px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.msg{margin:0;min-height:22px;font-size:15px;text-align:center;color:#ead9b8}
+.msg.err{color:#ffb4a2}
+.priv{margin:0;font-size:13px;text-align:center;color:#c9b898}
+.ok{max-width:440px;margin:0 auto;padding:36px 28px;border-radius:22px;border:1px solid rgba(217,171,85,.4);background:rgba(243,234,217,.06);animation:rise .9s both}
+.ok h3{font:italic 300 34px/1.1 var(--serif);margin:0 0 10px;color:var(--gold-2)}
+.ok p{margin:0;color:#e6d6bb}
+[hidden]{display:none!important}
+
+footer{background:#17040a;padding:36px 24px calc(36px + env(safe-area-inset-bottom,0px));text-align:center;font-size:14px;color:#b8a58a;border-top:1px solid rgba(217,171,85,.15)}
+footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);margin-bottom:6px}
+
+@media (max-width:720px){
+  .bar ul{gap:18px}
+  .ticket{grid-template-columns:1fr}
+  .stub::before,.stub::after{top:-1px}
+  .stub::before{left:0}.stub::after{left:100%}
+  .stub{border-left:0;border-top:2px dashed rgba(110,17,36,.3);flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+  .stub p{flex-basis:100%}
+  .stub .btn{margin-top:12px}
+  dl{gap:22px 16px}
+  .actions .btn{flex:1 1 220px}
+  .location-card{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.curtain{display:none}
+  .kicker,h1,.sub,.count,.actions{opacity:1;animation:none}.hero::before{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="curtain" aria-hidden="true"><i></i><i></i></div>
+
+<nav>
+  <div class="bar">
+    <a class="brand" href="#inicio">Esperando la carroza</a>
+    <ul>
+      <li><a href="#funcion">Función</a></li>
+      <li><a href="#lugar">Dónde es</a></li>
+      <li><a href="#reservar">Reservar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div>
+    <p class="kicker">Una comedia en vivo</p>
+    <h1>Esperando <span>la carroza</span></h1>
+    <p class="sub">Viernes 6 de noviembre, 12:00. Entrada libre.</p>
+    <div class="count" id="cuenta" role="timer" aria-label="Cuenta regresiva para la función">
+      <div><b id="cd">--</b><span>días</span></div>
+      <div><b id="ch">--</b><span>horas</span></div>
+      <div><b id="cm">--</b><span>min</span></div>
+      <div><b id="cs">--</b><span>seg</span></div>
+    </div>
+    <div class="actions">
+      <a class="btn gold" href="#reservar">Reservar mi lugar</a>
+      <a class="btn line" href="#funcion">Ver la función</a>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="funcion">
+  <div class="in">
+    <div class="ticket">
+      <div class="main">
+        <p class="t-title">Esperando la carroza</p>
+        <dl>
+          <div><dt>Día</dt><dd>Viernes</dd></div>
+          <div><dt>Fecha</dt><dd>6 de noviembre de 2026</dd></div>
+          <div><dt>Hora</dt><dd>12:00</dd></div>
+          <div><dt>Lugar</dt><dd>Escuela Técnica Canelones</dd></div>
+        </dl>
+      </div>
+      <div class="stub">
+        <small>Entrada</small>
+        <strong>Gratis</strong>
+        <p>Reservá con tu nombre, apellido y teléfono.</p>
+        <button id="calendario" class="btn line" type="button">Agregar al calendario</button>
+      </div>
+    </div>
+
+    <div class="location" id="lugar">
+      <div class="location-card">
+        <div class="map-box" aria-hidden="true">
+          <svg viewBox="0 0 24 32"><path fill="#d9ab55" d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0z"/><circle cx="12" cy="12" r="4.5" fill="#2a060d"/></svg>
+        </div>
+        <div class="map-copy">
+          <h3>¿Dónde es?</h3>
+          <p>José Enrique Rodó 614, 90000 Canelones, Departamento de Canelones</p>
+          <a class="link-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Jos%C3%A9%20Enrique%20Rod%C3%B3%20614%2C%20Canelones%2C%20Uruguay" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reservar">
+  <h2>Reservá tu lugar</h2>
+  <p class="lead">Dejanos tus datos para llevar el registro de quienes van a asistir.</p>
+  <p class="note">Se agradece no tomar fotos durante la función.</p>
+
+  <form id="reserva" novalidate>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label>Nombre
+      <input id="nombre" type="text" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
+    </label>
+    <label>Apellido
+      <input id="apellido" type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required>
+    </label>
+    <label>Teléfono
+      <input id="telefono" type="tel" inputmode="tel" name="telefono" placeholder="+598 99 123 456" autocomplete="tel" required>
+    </label>
+    <p id="msg" class="msg" role="status" aria-live="polite"></p>
+    <button id="enviar" class="btn gold" type="submit">Reservar lugar</button>
+    <p class="priv">Tu teléfono se usa solo para avisarte si hay cambios.</p>
+  </form>
+
+  <div id="ok" class="ok" hidden>
+    <h3 id="okTitulo">¡Listo!</h3>
+    <p>Tu reserva quedó registrada. Te esperamos el viernes 6 de noviembre a las 12:00.</p>
+  </div>
+</section>
+
+<footer>
+  <b>Esperando la carroza</b>
+  Comedia · Viernes 6 de noviembre de 2026, 12:00 · Entrada gratuita
+</footer>
+
+<script>
+(function(){
+  // Función: viernes 6 de noviembre de 2026, 12:00 (Uruguay, UTC-3). Se asume 1 hora de duración para el calendario.
+  var INICIO=new Date('2026-11-06T12:00:00-03:00'),FIN=new Date(INICIO.getTime()+60*60*1000);
+  var cuenta=document.getElementById('cuenta'),btnCal=document.getElementById('calendario');
+  function dos(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var ms=INICIO-new Date();
+    if(ms<=0){
+      cuenta.className='count thanks';cuenta.removeAttribute('role');cuenta.removeAttribute('aria-label');
+      cuenta.textContent='Gracias por venir';
+      if(new Date()>FIN&&btnCal){btnCal.hidden=true;}
+      clearInterval(timer);return;
+    }
+    var t=Math.floor(ms/1000);
+    document.getElementById('cd').textContent=Math.floor(t/86400);
+    document.getElementById('ch').textContent=dos(Math.floor(t%86400/3600));
+    document.getElementById('cm').textContent=dos(Math.floor(t%3600/60));
+    document.getElementById('cs').textContent=dos(t%60);
+  }
+  var timer=setInterval(tick,1000);tick();
+
+  function fechaICS(d){return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');}
+  function esc(t){return t.replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;');}
+  btnCal.addEventListener('click',function(){
+    var ics=[
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Esperando la carroza//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT',
+      'UID:esperando-la-carroza-20261106@obra',
+      'DTSTAMP:'+fechaICS(new Date()),
+      'DTSTART:'+fechaICS(INICIO),
+      'DTEND:'+fechaICS(FIN),
+      'SUMMARY:Esperando la carroza',
+      'LOCATION:'+esc('Escuela Técnica Canelones, José Enrique Rodó 614, Canelones, Uruguay'),
+      'DESCRIPTION:'+esc('Comedia. Entrada gratuita. Se agradece no tomar fotos durante la función.'),
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    var url=URL.createObjectURL(new Blob([ics],{type:'text/calendar;charset=utf-8'}));
+    var a=document.createElement('a');a.href=url;a.download='esperando-la-carroza.ics';
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  });
+})();
+</script>
+<script>
+(function(){
+  var form=document.getElementById('reserva'),msg=document.getElementById('msg'),btn=document.getElementById('enviar'),ok=document.getElementById('ok');
+  // Cuando FormSubmit esté activado, reemplazá DESTINO por el alias aleatorio que te da (así tu correo no queda visible).
+  var DESTINO=['llu255165','gmail.com'].join('@');
+  var ENDPOINT='https://formsubmit.co/ajax/'+DESTINO;
+  function say(t,err){msg.textContent=t;msg.className='msg'+(err?' err':'');}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nombre=document.getElementById('nombre').value.trim();
+    var apellido=document.getElementById('apellido').value.trim();
+    var telefono=document.getElementById('telefono').value.trim();
+
+    if(form.elements._honey.value){return;}
+    if(!nombre || !apellido || !telefono){
+      say('Escribí tu nombre, apellido y teléfono para reservar.',true);
+      return;
+    }
+
+    if(telefono.replace(/\D/g,'').length<8){
+      say('Revisá tu teléfono: tiene que tener al menos 8 dígitos.',true);
+      return;
+    }
+
+    btn.disabled=true;
+    btn.textContent='Enviando…';
+    say('');
+
+    fetch(ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        nombre:nombre,
+        apellido:apellido,
+        telefono:telefono,
+        _subject:'Reserva: Esperando la carroza',
+        _template:'table',
+        _captcha:'false'
+      })
+    }).then(function(r){
+      return r.json().catch(function(){return {};}).then(function(d){
+        return {ok:r.ok,d:d};
+      });
+    }).then(function(x){
+      if(x.ok && (x.d.success===true || x.d.success==='true')){
+        form.hidden=true;
+        document.getElementById('okTitulo').textContent='¡Listo, '+nombre+'!';
+        ok.hidden=false;
+      }else{
+        throw new Error('fail');
+      }
+    }).catch(function(){
+      btn.disabled=false;
+      btn.textContent='Reservar lugar';
+      say('No se pudo enviar la reserva. Revisá tu conexión e intentá de nuevo.',true);
+    });
+  });
+})();
+</script>
+</body>
+</html>
