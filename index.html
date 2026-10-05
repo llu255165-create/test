@@ -2,9 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formsubmit.co; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#2a060d">
 <meta name="description" content="Esperando la carroza. Comedia. Viernes 6 de noviembre de 2026, 12:00. Entrada gratuita.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_UY">
+<meta property="og:title" content="Esperando la carroza — Comedia en el teatro">
+<meta property="og:description" content="Viernes 6 de noviembre de 2026, 12:00. Entrada gratuita. Reservá tu lugar.">
+<meta name="twitter:card" content="summary">
 <title>Esperando la carroza — Comedia en el teatro</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎭%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +47,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:20;padding-top:env(safe-area-ins
 .bar ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:500}
 .bar a:hover{color:var(--gold-2)}
 
-.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:120px 24px 96px;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 100%,#5a0f21 0,transparent 70%),linear-gradient(180deg,#1a0409,var(--wine))}
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:120px 24px 96px;overflow:hidden;background:radial-gradient(520px circle at var(--mx,50%) var(--my,28%),rgba(240,209,143,.11),transparent 62%),radial-gradient(ellipse 80% 60% at 50% 100%,#5a0f21 0,transparent 70%),linear-gradient(180deg,#1a0409,var(--wine))}
 .hero::before{content:"";position:absolute;top:-10%;left:50%;width:140%;height:120%;margin-left:-70%;pointer-events:none;background:radial-gradient(ellipse 34% 62% at 50% 0,rgba(255,226,160,.30),rgba(255,226,160,.07) 55%,transparent 75%);animation:sweep 14s ease-in-out infinite}
 .hero>*{position:relative}
 .kicker{font-size:15px;font-weight:500;color:var(--gold);margin:0 0 20px;letter-spacing:.04em;opacity:0;animation:rise 1.4s 2.2s forwards}
@@ -97,7 +103,7 @@ dd{margin:0;font:400 clamp(22px,3vw,30px)/1.15 var(--serif)}
 .note{font-size:15px;color:var(--gold);margin:0 0 40px}
 form{max-width:440px;margin:0 auto;display:grid;gap:18px;text-align:left}
 label{display:grid;gap:8px;font-size:14px;font-weight:600;color:#ead9b8}
-input[type=text], input[type=tel]{width:100%;font:400 17px var(--sans);color:var(--ivory);background:rgba(243,234,217,.07);border:1px solid rgba(217,171,85,.3);border-radius:14px;padding:16px 18px;transition:border-color .25s,background .25s,box-shadow .25s}
+input[type=text], input[type=email]{width:100%;font:400 17px var(--sans);color:var(--ivory);background:rgba(243,234,217,.07);border:1px solid rgba(217,171,85,.3);border-radius:14px;padding:16px 18px;transition:border-color .25s,background .25s,box-shadow .25s}
 input::placeholder{color:rgba(243,234,217,.62)}
 input:focus{outline:none;border-color:var(--gold);background:rgba(243,234,217,.12);box-shadow:0 0 0 4px rgba(217,171,85,.18)}
 form .btn{width:100%;margin-top:6px}
@@ -113,26 +119,93 @@ form .btn{width:100%;margin-top:6px}
 footer{background:#17040a;padding:36px 24px calc(36px + env(safe-area-inset-bottom,0px));text-align:center;font-size:14px;color:#b8a58a;border-top:1px solid rgba(217,171,85,.15)}
 footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);margin-bottom:6px}
 
+h1,h2,.lead,.sub{text-wrap:balance}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.1;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.btn.gold{position:relative;overflow:hidden}
+.btn.gold::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s}
+.btn.gold:hover::after{left:130%}
+input[aria-invalid=true]{border-color:#ff9a86}
+.marquee{overflow:hidden;background:#17040a;border-block:1px solid rgba(217,171,85,.25);padding:16px 0}
+.track{display:flex;width:max-content;animation:slide 40s linear infinite}
+.track span{font:italic 300 clamp(20px,3vw,30px)/1.2 var(--serif);color:var(--gold);white-space:pre}
+@keyframes slide{to{transform:translateX(-50%)}}
+.js .rv{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .rv.vis{opacity:1;transform:none}
+.skip .curtain{display:none}
+.skip .kicker,.skip h1,.skip .sub,.skip .count,.skip .actions{opacity:1;animation:none}
+.sticky{display:none}
+::selection{background:var(--gold);color:var(--ink)}
+html{scrollbar-width:thin;scrollbar-color:var(--velvet) var(--wine)}
+.bar ul a{position:relative}
+.bar ul a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:var(--gold-2);transform:scaleX(0);transition:transform .3s}
+.bar ul a:hover::after,.bar ul a.act::after{transform:scaleX(1)}
+.count b.t{animation:tk .4s ease-out}
+@keyframes tk{from{opacity:.35;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.ok{position:relative;overflow:hidden}
+.cf{position:absolute;top:-14px;width:7px;height:12px;border-radius:2px;opacity:0;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(360px) rotate(540deg)}}
+.js .rv{transition-delay:var(--d,0s)}
+.hero>canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;background:linear-gradient(90deg,var(--gold),var(--gold-2));transform-origin:left;transform:scaleX(0);pointer-events:none}
+.saltar{position:fixed;left:12px;top:-70px;z-index:80;background:var(--gold);color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:700;transition:top .2s}
+.saltar:focus{top:calc(8px + env(safe-area-inset-top,0px))}
+.bar a.act{color:var(--gold-2)}
+.stub .bars{margin-top:20px;height:34px;opacity:.5;border-radius:2px;background:repeating-linear-gradient(90deg,var(--gold-2) 0 2px,transparent 2px 5px,var(--gold-2) 5px 6px,transparent 6px 11px,var(--gold-2) 11px 14px,transparent 14px 17px)}
+.how{background:radial-gradient(ellipse 70% 60% at 50% 0,rgba(110,17,36,.6),transparent 70%),var(--wine);padding:clamp(72px,11vw,128px) 24px}
+.how h2{margin:0 auto 48px;text-align:center}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.step{padding:32px 28px;border-radius:24px;border:1px solid rgba(217,171,85,.25);background:rgba(243,234,217,.05);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.step b{display:block;font:italic 300 64px/1 var(--serif);color:var(--gold);margin-bottom:14px}
+.step h3{font:400 24px/1.2 var(--serif);margin:0 0 8px}
+.step p{margin:0;color:#d9c9ac;font-size:16px}
+.faq{background:var(--ivory);color:var(--ink);padding:clamp(72px,11vw,128px) 24px}
+.faq .in{max-width:760px}
+.faq h2{margin-bottom:36px}
+details{border-top:1px solid rgba(110,17,36,.2)}
+details:last-of-type{border-bottom:1px solid rgba(110,17,36,.2)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:400 clamp(20px,2.6vw,26px)/1.25 var(--serif);transition:color .25s}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 34px/1 var(--serif);color:var(--velvet);transition:transform .3s}
+summary:hover{color:var(--velvet)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 24px;color:#4f3740;max-width:60ch}
+details a{color:var(--velvet);text-decoration:underline;text-underline-offset:3px}
+.fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin-top:20px}
+.fnav a:hover{color:var(--gold-2)}
+@media (max-width:560px){
+  .brand{font-size:18px}
+  .bar ul li:not(:last-child){display:none}
+  .bar ul a[href="#reservar"]{padding:8px 16px;border-radius:999px;background:linear-gradient(180deg,var(--gold-2),var(--gold));color:var(--ink);font-weight:700}
+  .bar ul a[href="#reservar"]:hover{color:var(--ink)}
+  .bar ul a[href="#reservar"]::after{display:none}
+}
 @media (max-width:720px){
   .bar ul{gap:18px}
+  .btn.sticky{display:flex;position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;transform:translateY(170%);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+  .btn.sticky.on{transform:none}
   .ticket{grid-template-columns:1fr}
   .stub::before,.stub::after{top:-1px}
   .stub::before{left:0}.stub::after{left:100%}
   .stub{border-left:0;border-top:2px dashed rgba(110,17,36,.3);flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
   .stub p{flex-basis:100%}
   .stub .btn{margin-top:12px}
+  .stub .bars{flex-basis:100%}
   dl{gap:22px 16px}
   .actions .btn{flex:1 1 220px}
   .location-card{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}.curtain{display:none}
-  .kicker,h1,.sub,.count,.actions{opacity:1;animation:none}.hero::before{animation:none}
+  .kicker,h1,.sub,.count,.actions{opacity:1;animation:none}.hero::before,.track{animation:none}
+  .js .rv{opacity:1;transform:none;transition:none}.btn.gold::after{display:none}.count b.t{animation:none}.cf{display:none}
 }
 </style>
-<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}</script>
+<script>if(self!==top){try{top.location=self.location;}catch(e){document.documentElement.style.display='none';}}var h=document.documentElement;h.classList.add('js');if('scrollRestoration' in history){history.scrollRestoration='manual';}try{if(sessionStorage.getItem('cv')){h.classList.add('skip');}else{sessionStorage.setItem('cv','1');}}catch(e){}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TheaterEvent","name":"Esperando la carroza","description":"Comedia. Entrada gratuita.","startDate":"2026-11-06T12:00:00-03:00","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","inLanguage":"es","isAccessibleForFree":true,"location":{"@type":"Place","name":"Escuela Técnica Canelones","address":{"@type":"PostalAddress","streetAddress":"José Enrique Rodó 614","addressLocality":"Canelones","addressCountry":"UY"}},"offers":{"@type":"Offer","price":"0","priceCurrency":"UYU","availability":"https://schema.org/InStock"}}</script>
 </head>
 <body>
+<a class="saltar" href="#funcion">Saltar al contenido</a>
+<div class="progress" id="prog" aria-hidden="true"></div>
 <div class="curtain" aria-hidden="true"><i></i><i></i></div>
 
 <nav>
@@ -141,12 +214,14 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
     <ul>
       <li><a href="#funcion">Función</a></li>
       <li><a href="#lugar">Dónde es</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
       <li><a href="#reservar">Reservar</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="hero" id="inicio">
+  <canvas id="polvo" aria-hidden="true"></canvas>
   <div>
     <p class="kicker">Una comedia en vivo</p>
     <h1>Esperando <span>la carroza</span></h1>
@@ -164,9 +239,14 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
   </div>
 </header>
 
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Comedia  ✦  Entrada gratuita  ✦  Viernes 6 de noviembre  ✦  12:00  ✦  Escuela Técnica Canelones  ✦  </span>
+  <span>Comedia  ✦  Entrada gratuita  ✦  Viernes 6 de noviembre  ✦  12:00  ✦  Escuela Técnica Canelones  ✦  </span>
+</div></div>
+
 <section class="band" id="funcion">
   <div class="in">
-    <div class="ticket">
+    <div class="ticket rv">
       <div class="main">
         <p class="t-title">Esperando la carroza</p>
         <dl>
@@ -179,13 +259,14 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
       <div class="stub">
         <small>Entrada</small>
         <strong>Gratis</strong>
-        <p>Reservá con tu nombre, apellido y teléfono.</p>
+        <p>Reservá con tu nombre, apellido y correo.</p>
         <button id="calendario" class="btn line" type="button">Agregar al calendario</button>
+        <div class="bars" aria-hidden="true"></div>
       </div>
     </div>
 
     <div class="location" id="lugar">
-      <div class="location-card">
+      <div class="location-card rv">
         <div class="map-box" aria-hidden="true">
           <svg viewBox="0 0 24 32"><path fill="#d9ab55" d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0z"/><circle cx="12" cy="12" r="4.5" fill="#2a060d"/></svg>
         </div>
@@ -199,36 +280,65 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
   </div>
 </section>
 
+<section class="how" id="como">
+  <div class="in">
+    <h2 class="rv">Reservar es simple</h2>
+    <ol class="steps">
+      <li class="step rv"><b>1</b><h3>Completá tus datos</h3><p>Nombre, apellido y correo. Es lo único que te pedimos.</p></li>
+      <li class="step rv" style="--d:.12s"><b>2</b><h3>Enviá la reserva</h3><p>Llevamos el registro de quienes van a asistir.</p></li>
+      <li class="step rv" style="--d:.24s"><b>3</b><h3>Vení a la función</h3><p>Viernes 6 de noviembre, 12:00, en la Escuela Técnica Canelones.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="preguntas">
+  <div class="in">
+    <h2 class="rv">Preguntas frecuentes</h2>
+    <div class="rv">
+      <details><summary>¿Cuánto cuesta la entrada?</summary><p>Nada. La entrada es gratuita.</p></details>
+      <details><summary>¿Cuándo y dónde es?</summary><p>El viernes 6 de noviembre de 2026 a las 12:00, en la Escuela Técnica Canelones, José Enrique Rodó 614, Canelones.</p></details>
+      <details><summary>¿Cómo llego?</summary><p>En la sección <a href="#lugar">¿Dónde es?</a> tocá «Cómo llegar» y se abre en tu aplicación de mapas.</p></details>
+      <details><summary>¿Para qué piden mis datos?</summary><p>Para llevar el registro de quienes van a asistir y avisarte si hay cambios. Los borramos después de la función.</p></details>
+      <details><summary>¿Puedo sacar fotos?</summary><p>Se agradece no tomar fotos durante la función.</p></details>
+    </div>
+  </div>
+</section>
+
 <section class="reserve" id="reservar">
-  <h2>Reservá tu lugar</h2>
+  <h2 class="rv">Reservá tu lugar</h2>
   <p class="lead">Dejanos tus datos para llevar el registro de quienes van a asistir.</p>
   <p class="note">Se agradece no tomar fotos durante la función.</p>
 
-  <form id="reserva" novalidate>
+  <form id="reserva" class="rv" novalidate>
     <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label>Nombre
-      <input id="nombre" type="text" name="nombre" placeholder="Tu nombre" autocomplete="given-name" required>
+      <input id="nombre" type="text" name="nombre" placeholder="Tu nombre" autocomplete="given-name" maxlength="40" required>
     </label>
     <label>Apellido
-      <input id="apellido" type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" required>
+      <input id="apellido" type="text" name="apellido" placeholder="Tu apellido" autocomplete="family-name" maxlength="40" required>
     </label>
-    <label>Teléfono
-      <input id="telefono" type="tel" inputmode="tel" name="telefono" placeholder="+598 99 123 456" autocomplete="tel" required>
+    <label>Correo (Gmail)
+      <input id="correo" type="email" inputmode="email" name="email" placeholder="tunombre@gmail.com" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="80" required>
     </label>
     <p id="msg" class="msg" role="status" aria-live="polite"></p>
     <button id="enviar" class="btn gold" type="submit">Reservar lugar</button>
-    <p class="priv">Tu teléfono se usa solo para avisarte si hay cambios.</p>
+    <p class="priv">Usamos tu nombre y correo solo para el registro de asistentes y para avisarte si hay cambios. Los borramos después de la función.</p>
   </form>
 
   <div id="ok" class="ok" hidden>
     <h3 id="okTitulo">¡Listo!</h3>
     <p>Tu reserva quedó registrada. Te esperamos el viernes 6 de noviembre a las 12:00.</p>
+    <p style="margin-top:10px;font-size:15px;color:#c9b898">Cualquier cambio te lo avisamos a <b id="okMail"></b>.</p>
+    <a id="wa" class="btn line" href="#" target="_blank" rel="noopener" style="margin-top:22px">Compartir por WhatsApp</a>
   </div>
 </section>
+
+<a class="btn gold sticky" id="sticky" href="#reservar">Reservar mi lugar</a>
 
 <footer>
   <b>Esperando la carroza</b>
   Comedia · Viernes 6 de noviembre de 2026, 12:00 · Entrada gratuita
+  <div class="fnav"><a href="#inicio">Inicio</a><a href="#funcion">Función</a><a href="#lugar">Dónde es</a><a href="#preguntas">Preguntas</a><a href="#reservar">Reservar</a></div>
 </footer>
 
 <script>
@@ -268,7 +378,7 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
     document.getElementById('cd').textContent=Math.floor(t/86400);
     document.getElementById('ch').textContent=dos(Math.floor(t%86400/3600));
     document.getElementById('cm').textContent=dos(Math.floor(t%3600/60));
-    document.getElementById('cs').textContent=dos(t%60);
+    var cs=document.getElementById('cs');cs.textContent=dos(t%60);cs.classList.remove('t');void cs.offsetWidth;cs.classList.add('t');
   }
   var timer=setInterval(tick,1000);tick();
 
@@ -296,27 +406,95 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
 <script>
 (function(){
   var form=document.getElementById('reserva'),msg=document.getElementById('msg'),btn=document.getElementById('enviar'),ok=document.getElementById('ok');
-  // Cuando FormSubmit esté activado, reemplazá DESTINO por el alias aleatorio que te da (así tu correo no queda visible).
-  var DESTINO=['llu255165','gmail.com'].join('@');
-  var ENDPOINT='https://formsubmit.co/ajax/'+DESTINO;
+  // Alias aleatorio de FormSubmit: reemplaza a tu correo para que no quede visible en la página.
+  var ENDPOINT='https://formsubmit.co/ajax/43a6317c64153ef108fb3d56a243e180';
+  var abierto=Date.now(),enviando=false;
+/*FILTRO*/
+  // Palabras no permitidas. Podés agregar o quitar las que quieras (en minúsculas, sin tildes, salvo la ñ).
+  var PALABRAS=['puta','puto','putas','putos','putita','putito','pija','pijas','pijudo','verga','vergas','culo','culos','culiao','culiado','chota','choto','mierda','mierdas','carajo','joder','jodete','jodido','coño','cabron','cabrona','pendejo','pendeja','boludo','boluda','pelotudo','pelotuda','forro','forra','zorra','idiota','imbecil','estupido','estupida','tarado','tarada','mogolico','malparido','gilipollas','cojudo','cojuda','hdp','ctm','lpm','ptm','hijueputa','sorete','garca','trolo','trola','mamaguevo','maricon','cagon','cagada','pajero','pajera','conchudo','conchuda','chupapijas'];
+  // Fragmentos que bloquean la palabra aunque venga pegada a otras letras (solo los que no aparecen en apellidos comunes).
+  var FRAGMENTOS=['pelotud','boludo','mierda','hijoputa','hijodeputa','hijueputa','conchadetu','conchatu','conchetu','chupapij','malparid','gilipoll','cojud','culiad','culiao','mamaguev','carajo','pendejo','sorete','putamadre'];
+  var NOMBRE_RE=/^\p{L}[\p{L}\s'’.-]{1,39}$/u;
+  function reduc(w){return w.replace(/(.)\1+/g,'$1');}
+  function limpiar(t){
+    var m={'0':'o','1':'i','3':'e','4':'a','5':'s','7':'t','@':'a','$':'s','!':'i','|':'i','+':'t'};
+    return t.toLowerCase().replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ')
+      .replace(/[013457@$!|+]/g,function(c){return m[c];}).replace(/[^a-zñ\s]/g,' ');
+  }
+  function soez(texto){
+    var t=limpiar(texto).replace(/\s+/g,' ').trim(),u=[],buf='';
+    if(/concha\s*(de\s*)?tu/.test(t)){return true;}
+    t.split(' ').forEach(function(w){
+      if(w.length===1){buf+=w;}else{if(buf){u.push(buf);buf='';}if(w){u.push(w);}}   // junta letras sueltas: "p u t a"
+    });
+    if(buf){u.push(buf);}
+    var set=PALABRAS.map(reduc),frag=FRAGMENTOS.map(reduc);
+    return u.some(function(w){
+      var r=reduc(w);
+      return set.indexOf(r)>-1||frag.some(function(f){return r.indexOf(f)>-1;});
+    });
+  }
+  function arreglar(v){   // "juan perez" o "JUAN PEREZ" → "Juan Perez"; si ya viene mezclado, no se toca
+    v=v.replace(/\s+/g,' ').trim();
+    if(v===v.toLowerCase()||v===v.toUpperCase()){v=v.toLowerCase().replace(/(^|[\s'’-])(\p{L})/gu,function(m,a,b){return a+b.toUpperCase();});}
+    return v;
+  }
+  function marcar(ids){ids.forEach(function(id){document.getElementById(id).setAttribute('aria-invalid','true');});}
+  ['nombre','apellido','correo'].forEach(function(id){var el=document.getElementById(id);el.addEventListener('input',function(){el.removeAttribute('aria-invalid');});});
+  function confeti(box){
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches){return;}
+    var cols=['#d9ab55','#f0d18f','#f3ead9','#a3263f'];
+    for(var i=0;i<42;i++){
+      var e=document.createElement('i');e.className='cf';
+      e.style.cssText='left:'+(Math.random()*100)+'%;background:'+cols[i%4]+';animation-delay:'+(Math.random()*.6)+'s;animation-duration:'+(1.8+Math.random()*1.4)+'s';
+      box.appendChild(e);
+      setTimeout((function(el){return function(){el.remove();};})(e),3800);
+    }
+  }
+/*FIN*/
   function say(t,err){msg.textContent=t;msg.className='msg'+(err?' err':'');}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var nombre=document.getElementById('nombre').value.trim();
     var apellido=document.getElementById('apellido').value.trim();
-    var telefono=document.getElementById('telefono').value.trim();
+    var correo=document.getElementById('correo').value.trim();
 
     if(form.elements._honey.value){return;}
-    if(!nombre || !apellido || !telefono){
-      say('Escribí tu nombre, apellido y teléfono para reservar.',true);
+    if(enviando){return;}
+    if(Date.now()-abierto<3000){say('Esperá un segundo y volvé a tocar «Reservar lugar».',true);return;}
+    try{
+      var ult=+localStorage.getItem('rv_ult')||0;
+      if(Date.now()-ult<60000){say('Ya enviaste una reserva hace un momento. Esperá un minuto para enviar otra.',true);return;}
+    }catch(e){}
+    var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo);
+    ['nombre','apellido','correo'].forEach(function(id){
+      var el=document.getElementById(id);
+      el.setAttribute('aria-invalid',String(id==='correo'?!emailOk:!el.value.trim()));
+    });
+    if(!nombre || !apellido || !correo){
+      say('Escribí tu nombre, apellido y correo para reservar.',true);
+      return;
+    }
+    if(!emailOk){
+      say('Revisá tu correo: tiene que ser una dirección válida, por ejemplo nombre@gmail.com.',true);
+      document.getElementById('correo').focus();
+      return;
+    }
+    if(!NOMBRE_RE.test(nombre)||!NOMBRE_RE.test(apellido)){
+      marcar(['nombre','apellido'].filter(function(id){return !NOMBRE_RE.test(document.getElementById(id).value.trim());}));
+      say('Usá solo letras en tu nombre y apellido (mínimo 2).',true);
+      return;
+    }
+    var sucios=[['nombre',nombre],['apellido',apellido],['correo',correo.split('@')[0]]].filter(function(p){return soez(p[1]);});
+    if(sucios.length){
+      marcar(sucios.map(function(p){return p[0];}));
+      say('Hay palabras que no están permitidas. Escribí tus datos reales, por favor.',true);
+      document.getElementById(sucios[0][0]).focus();
       return;
     }
 
-    if(telefono.replace(/\D/g,'').length<8){
-      say('Revisá tu teléfono: tiene que tener al menos 8 dígitos.',true);
-      return;
-    }
-
+    nombre=arreglar(nombre);apellido=arreglar(apellido);
+    enviando=true;
     btn.disabled=true;
     btn.textContent='Enviando…';
     say('');
@@ -327,7 +505,7 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
       body:JSON.stringify({
         nombre:nombre,
         apellido:apellido,
-        telefono:telefono,
+        email:correo,
         _subject:'Reserva: Esperando la carroza',
         _template:'table',
         _captcha:'false'
@@ -339,17 +517,87 @@ footer b{display:block;font:italic 400 22px var(--serif);color:var(--ivory);marg
     }).then(function(x){
       if(x.ok && (x.d.success===true || x.d.success==='true')){
         form.hidden=true;
+        try{localStorage.setItem('rv_ult',String(Date.now()));}catch(e){}
         document.getElementById('okTitulo').textContent='¡Listo, '+nombre+'!';
         ok.hidden=false;
+        document.getElementById('okMail').textContent=correo;
+        confeti(ok);
+        document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent('Esperando la carroza, comedia. Viernes 6 de noviembre, 12:00. Entrada gratuita. Reservá tu lugar: '+location.href.split('#')[0]);
       }else{
         throw new Error('fail');
       }
     }).catch(function(){
+      enviando=false;
       btn.disabled=false;
       btn.textContent='Reservar lugar';
       say('No se pudo enviar la reserva. Revisá tu conexión e intentá de nuevo.',true);
     });
   });
+})();
+</script>
+<script>
+(function(){
+  var h=document.documentElement;
+  // Tocar la pantalla durante el telón lo salta.
+  addEventListener('pointerdown',function(){if(performance.now()<3300){h.classList.add('skip');}},{passive:true});
+  // Aparición suave al hacer scroll
+  var rv=document.querySelectorAll('.rv'),hasIO='IntersectionObserver' in window;
+  if(hasIO){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:.12});
+    rv.forEach(function(el){io.observe(el);});
+  }else{rv.forEach(function(el){el.classList.add('vis');});}
+  // Luz que sigue al cursor (solo con mouse)
+  var hero=document.getElementById('inicio');
+  if(window.matchMedia&&matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--mx',(e.clientX-r.left)+'px');hero.style.setProperty('--my',(e.clientY-r.top)+'px');});
+  }
+  // Botón fijo para reservar en celular
+  var st=document.getElementById('sticky'),fuera=false,res=false,pie=false;
+  function upd(){st.classList.toggle('on',fuera&&!res&&!pie);}
+  if(hasIO){
+    var ob=function(el,fn){new IntersectionObserver(function(es){fn(es[0].isIntersecting);upd();}).observe(el);};
+    ob(hero,function(v){fuera=!v;});
+    ob(document.getElementById('reservar'),function(v){res=v;});
+    ob(document.querySelector('footer'),function(v){pie=v;});
+  }
+})();
+</script>
+<script>
+(function(){
+  // Barra de progreso y sección activa en el menú
+  var prog=document.getElementById('prog'),links=document.querySelectorAll('.bar ul a'),ids=['funcion','lugar','preguntas','reservar'],tk=false;
+  function sync(){
+    tk=false;
+    var max=document.documentElement.scrollHeight-innerHeight;
+    prog.style.transform='scaleX('+(max>0?Math.min(1,Math.max(0,pageYOffset/max)):0)+')';
+    var act=null;
+    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=innerHeight*.45){act='#'+id;}});
+    links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')===act);});
+  }
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(sync);}},{passive:true});
+  sync();
+
+  // Polvo dorado flotando en el haz de luz
+  var c=document.getElementById('polvo');
+  if(!c||(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)){return;}
+  var x=c.getContext('2d'),W=0,H=0,P=[],run=true,dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);}
+  size();addEventListener('resize',size);
+  for(var i=0,n=W<720?26:54;i<n;i++){P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,v:Math.random()*.25+.05,a:Math.random()*.5+.15,d:Math.random()*6.28});}
+  function f(){
+    if(run){
+      x.clearRect(0,0,W,H);
+      P.forEach(function(p){
+        p.y-=p.v;p.d+=.01;p.x+=Math.sin(p.d)*.15;
+        if(p.y<-4){p.y=H+4;p.x=Math.random()*W;}
+        x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);
+        x.fillStyle='rgba(240,209,143,'+(p.a*(.6+.4*Math.sin(p.d*2))).toFixed(3)+')';x.fill();
+      });
+    }
+    requestAnimationFrame(f);
+  }
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){run=e[0].isIntersecting;}).observe(c);}
+  f();
 })();
 </script>
 </body>
