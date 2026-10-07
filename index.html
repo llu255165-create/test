@@ -13,7 +13,7 @@
   <meta property="og:locale" content="es_UY">
   <meta property="og:site_name" content="Esperando la carroza">
   <meta property="og:title" content="Esperando la carroza — Comedia en el teatro">
-  <meta property="og:description" content="Viernes 6 de noviembre de 2026, 12:00, Escuela Técnica Canelones. Entrada gratuita. Reservá tu lugar.">
+  <meta property="og:description" content="Viernes 6 de noviembre de 2026, 12:00, Escuela Técnica Canelones. Entrada gratuita. Confirmá tu asistencia.">
   <meta name="twitter:card" content="summary">
   <!-- Para que WhatsApp, Instagram y otras apps muestren una imagen al compartir el enlace:
        subí una portada de 1200×630 px y activá estas líneas con la URL completa de tu sitio.
@@ -745,7 +745,7 @@ footer{
         <li><a href="#funcion">Función</a></li>
         <li><a href="#lugar">Dónde es</a></li>
         <li><a href="#preguntas">Preguntas</a></li>
-        <li data-reserva><a class="menu-cta" href="#reservar">Reservar</a></li>
+        <li data-reserva><a class="menu-cta" href="#reservar">Confirmar</a></li>
       </ul>
     </nav>
   </header>
@@ -765,7 +765,7 @@ footer{
           <div class="cell" data-u="s"><b>--</b><span>seg</span></div>
         </div>
         <div class="actions">
-          <a class="btn btn--gold" href="#reservar" data-reserva>Reservar mi lugar</a>
+          <a class="btn btn--gold" href="#reservar" data-reserva>Confirmar mi asistencia</a>
           <a class="btn btn--line" href="#funcion">Ver la función</a>
         </div>
       </div>
@@ -805,7 +805,7 @@ footer{
           <div class="stub">
             <span class="stub-label">Entrada</span>
             <strong>Gratis</strong>
-            <p data-reserva>Reservá con tu nombre, apellido y correo.</p>
+            <p data-reserva>Confirmá con tu nombre, apellido y correo.</p>
             <button class="btn btn--line btn--sm" type="button" data-calendar>Agregar al calendario</button>
             <div class="bars" aria-hidden="true"></div>
           </div>
@@ -828,10 +828,10 @@ footer{
 
     <section class="how" id="como" data-reserva>
       <div class="in">
-        <h2 class="section-title rv">Reservar es simple</h2>
+        <h2 class="section-title rv">Confirmar es simple</h2>
         <ol class="steps" role="list">
           <li class="step rv"><b aria-hidden="true">1</b><h3>Completá tus datos</h3><p>Nombre, apellido y correo. Es lo único que te pedimos.</p></li>
-          <li class="step rv" style="--d:.12s"><b aria-hidden="true">2</b><h3>Enviá la reserva</h3><p>Llevamos el registro de quienes van a asistir.</p></li>
+          <li class="step rv" style="--d:.12s"><b aria-hidden="true">2</b><h3>Confirmá tu asistencia</h3><p>Llevamos el registro de quienes van a asistir.</p></li>
           <li class="step rv" style="--d:.24s"><b aria-hidden="true">3</b><h3>Vení a la función</h3><p>Viernes 6 de noviembre, 12:00, en la Escuela Técnica Canelones.</p></li>
         </ol>
       </div>
@@ -852,11 +852,11 @@ footer{
 
     <section class="reserve" id="reservar">
       <div class="reserve-open">
-        <h2 class="section-title rv" id="reserva-titulo">Reservá tu lugar</h2>
+        <h2 class="section-title rv" id="reserva-titulo">Confirmá tu asistencia</h2>
         <p class="lead">Dejanos tus datos para llevar el registro de quienes van a asistir.</p>
         <p class="note">Se agradece no tomar fotos durante la función.</p>
 
-        <noscript><p class="form-msg err">Para reservar necesitás activar JavaScript en tu navegador.</p></noscript>
+        <noscript><p class="form-msg err">Para confirmar tu asistencia necesitás activar JavaScript en tu navegador.</p></noscript>
 
         <form id="reserva" class="form rv" novalidate aria-labelledby="reserva-titulo">
           <div class="hp" aria-hidden="true">
@@ -880,31 +880,31 @@ footer{
           </div>
 
           <p id="msg" class="form-msg" role="status"></p>
-          <button id="enviar" class="btn btn--gold" type="submit">Reservar lugar</button>
+          <button id="enviar" class="btn btn--gold" type="submit">Confirmar asistencia</button>
           <p class="priv">Usamos tu nombre y correo solo para el registro de asistentes y para avisarte si hay cambios. Los borramos después de la función.</p>
         </form>
 
         <div id="ok" class="ok" hidden>
           <h3 id="okTitulo" class="ok-title" tabindex="-1">¡Listo!</h3>
-          <p>Tu reserva quedó registrada. Te esperamos el viernes 6 de noviembre a las 12:00.</p>
+          <p>Tu asistencia quedó confirmada. Te esperamos el viernes 6 de noviembre a las 12:00.</p>
           <p class="ok-note">Cualquier cambio te lo avisamos a <b id="okMail"></b>.</p>
           <div class="ok-actions">
             <button class="btn btn--gold btn--sm" type="button" data-calendar>Agregar al calendario</button>
             <a id="wa" class="btn btn--line btn--sm" href="#" target="_blank" rel="noopener noreferrer">Compartir por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
           </div>
-          <button id="otra" class="ok-again" type="button">Reservar otro lugar</button>
+          <button id="otra" class="ok-again" type="button">Confirmar otra asistencia</button>
         </div>
       </div>
 
       <div class="reserve-closed" hidden>
-        <h2 class="section-title">Reservas cerradas</h2>
+        <h2 class="section-title">Confirmaciones cerradas</h2>
         <p class="lead">La función ya empezó. ¡Gracias por acompañarnos!</p>
       </div>
     </section>
 
   </main>
 
-  <a class="btn btn--gold sticky-cta" id="sticky" href="#reservar" data-reserva>Reservar mi lugar</a>
+  <a class="btn btn--gold sticky-cta" id="sticky" href="#reservar" data-reserva>Confirmar mi asistencia</a>
 
   <footer>
     <p class="foot-brand">Esperando la carroza</p>
@@ -914,7 +914,7 @@ footer{
       <a href="#funcion">Función</a>
       <a href="#lugar">Dónde es</a>
       <a href="#preguntas">Preguntas</a>
-      <a href="#reservar" data-reserva>Reservar</a>
+      <a href="#reservar" data-reserva>Confirmar asistencia</a>
     </nav>
   </footer>
 
@@ -1252,7 +1252,7 @@ footer{
       enviando = si;
       btn.setAttribute('aria-disabled', String(si));
       btn.classList.toggle('is-loading', si);
-      btn.textContent = si ? 'Enviando…' : 'Reservar lugar';
+      btn.textContent = si ? 'Enviando…' : 'Confirmar asistencia';
       form.setAttribute('aria-busy', String(si));
     };
     CAMPOS.forEach(id => el(id).addEventListener('input', () => desmarcar(id)));
@@ -1276,7 +1276,7 @@ footer{
       el('okTitulo').textContent = `¡Listo, ${nombre}!`;
       el('okMail').textContent = correo;
       el('wa').href = 'https://wa.me/?text=' + encodeURIComponent(
-        `${EVENTO.nombre}, comedia. Viernes 6 de noviembre, 12:00. Entrada gratuita. Reservá tu lugar: ${location.href.split('#')[0]}`
+        `${EVENTO.nombre}, comedia. Viernes 6 de noviembre, 12:00. Entrada gratuita. Confirmá tu asistencia: ${location.href.split('#')[0]}`
       );
       form.hidden = true;
       ok.hidden = false;
@@ -1310,10 +1310,10 @@ footer{
       }
 
       // 2) Anti-spam (recién después de validar, para que los errores del formulario siempre se vean primero)
-      if (Date.now() - abierto < 3000) { decir('Esperá un segundo y volvé a tocar «Reservar lugar».', true); return; }
+      if (Date.now() - abierto < 3000) { decir('Esperá un segundo y volvé a tocar «Confirmar asistencia».', true); return; }
       try {
         if (Date.now() - (+localStorage.getItem('rv_ult') || 0) < 60000) {
-          decir('Ya enviaste una reserva hace un momento. Esperá un minuto para enviar otra.', true);
+          decir('Ya confirmaste tu asistencia hace un momento. Esperá un minuto para confirmar otra.', true);
           return;
         }
       } catch (err) { /* sin almacenamiento */ }
@@ -1326,7 +1326,7 @@ footer{
       fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ nombre, apellido, email: correo, _subject: 'Reserva: Esperando la carroza', _template: 'table', _captcha: 'false' }),
+        body: JSON.stringify({ nombre, apellido, email: correo, _subject: 'Asistencia: Esperando la carroza', _template: 'table', _captcha: 'false' }),
         signal: ctrl.signal
       })
         .then(r => r.json().catch(() => ({})).then(d => ({ bien: r.ok, d })))
@@ -1336,7 +1336,7 @@ footer{
         })
         .catch(() => {
           // Antes decía "quedó guardada para reintentar", pero nada la reintentaba: ahora el mensaje es honesto
-          decir('No pudimos enviar tu reserva. Probá de nuevo en unos segundos; tus datos siguen en el formulario.', true);
+          decir('No pudimos confirmar tu asistencia. Probá de nuevo en unos segundos; tus datos siguen en el formulario.', true);
         })
         .finally(() => { clearTimeout(corte); ocupado(false); });
     });
